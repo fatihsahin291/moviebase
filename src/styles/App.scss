@@ -1,0 +1,12 @@
+.app {
+	&,
+	&.light-mode {
+	}
+
+	&.dark-mode {
+	}
+
+	--color-bg-primary: #392467;
+	--color-bg-secondary: #5d3587;
+	--color-bg-tertiary: #a367b1;
+}
