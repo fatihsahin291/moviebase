@@ -15,7 +15,7 @@
 		border: none;
 		border-radius: 0.5rem;
 		background-color: var(
-			--color-bg-secondary-light
+			--color-bg-secondary-dark
 		);
 		color: var(--color-text-primary);
 		font-size: 2rem;
@@ -25,7 +25,7 @@
 		&:focus {
 			outline: none;
 			background-color: var(
-				--color-bg-secondary-dark
+				--color-bg-secondary-light
 			);
 		}
 	}

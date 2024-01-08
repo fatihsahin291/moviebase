@@ -1,0 +1,14 @@
+@import url(./movie-preview.scss);
+
+.dashboard {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 80%;
+	max-height: 100%;
+	overflow-y: scroll;
+	padding: 1rem;
+	margin: 2rem auto;
+	border-radius: 1rem;
+	background-color: var(--color-bg-secondary);
+}
