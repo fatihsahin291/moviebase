@@ -1,16 +1,15 @@
-import useMovies from "../helpers/useMovies";
 import MoviePreview from "./MoviePreview";
+import LoadingIndicator from "./LoadingIndicator";
 
-function Dashboard() {
-	const { movies, loading, error } =
-		useMovies("dead");
+function Dashboard({ movies, loading, error }) {
+	if (loading) {
+		return <LoadingIndicator />;
+	}
 
-	console.log(movies);
+	if (error) return <div>Error: {error}</div>;
 
 	return (
 		<div className="dashboard">
-			{loading && <div>Loading...</div>}
-			{error && <div>Error: {error}</div>}
 			{movies &&
 				movies.map((movie) => (
 					<MoviePreview

@@ -9,11 +9,9 @@ function MoviePreview({ movie }) {
 				className="movie-img"
 			/>
 			<div className="movie-info">
-				<h3 className="movie-title">
-					Title: {Title}
-				</h3>
+				<h3 className="movie-title">{Title}</h3>
 				<p className="movie-year">
-					Year(s) {Year}
+					Year(s): {Year}
 				</p>
 				<p className="movie-type">Type: {Type}</p>
 			</div>

@@ -24,8 +24,8 @@
 		--color-bg-secondary-light: #8562ab;
 		--color-bg-secondary-dark: #532f7a;
 
-		--color-text-primary: #fff;
-		--color-text-secondary: #eee;
+		--color-text-primary: #333;
+		--color-text-secondary: #555;
 	}
 
 	&.dark-mode {
@@ -35,5 +35,32 @@
 
 		--color-bg-secondary-light: #532f7a;
 		--color-bg-secondary-dark: #8562ab;
+
+		--color-text-primary: #fff;
+		--color-text-secondary: #eee;
 	}
+}
+
+::-webkit-scrollbar {
+	width: 1rem;
+	background: #5d3587;
+}
+
+::-webkit-scrollbar-track {
+	background: #5d3587;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #2f1a45;
+	border-radius: 1rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #8562ab;
+}
+
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px
+		rgba(0, 0, 0, 0.3);
+	border-radius: 1rem;
 }
