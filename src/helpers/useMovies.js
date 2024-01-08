@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
+import { KEY } from "../utils/constants";
 
-const KEY = "f84fc31d";
-
-export default function useMovies(search) {
+export default function useMovies(searchOptions) {
 	const [movies, setMovies] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
+
+	const { searchTerm, searchYear, searchType } =
+		searchOptions;
 
 	useEffect(() => {
 		const getMovies = async () => {
@@ -13,7 +15,7 @@ export default function useMovies(search) {
 				setLoading(true);
 
 				const response = await fetch(
-					`https://www.omdbapi.com/?apikey=${KEY}&s=${search}`
+					`https://www.omdbapi.com/?apikey=${KEY}&s=${searchTerm}&y=${searchYear}&type=${searchType}`
 				);
 				const data = await response.json();
 
@@ -29,7 +31,7 @@ export default function useMovies(search) {
 			}
 		};
 		getMovies();
-	}, [search]);
+	}, [searchTerm, searchYear, searchType]);
 
 	return { movies, loading, error };
 }

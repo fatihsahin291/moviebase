@@ -8,11 +8,11 @@ bodY {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: #000;
+	background: var(--color-bg-primary);
 }
 .wave {
 	width: 5px;
-	height: 100px;
+	height: 50px;
 	background: linear-gradient(45deg, cyan, #fff);
 	margin: 10px;
 	animation: wave 1s linear infinite;

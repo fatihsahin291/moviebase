@@ -6,6 +6,7 @@
 	gap: 1rem;
 	height: 5rem;
 	width: 100%;
+	border: 1px solid var(--color-bg-secondary-dark);
 	border-radius: 0 0 1rem 1rem;
 	background-color: var(--color-bg-secondary);
 
@@ -49,6 +50,93 @@
 				--color-bg-secondary-light
 			);
 			color: var(--color-text-secondary);
+		}
+	}
+
+	.filter-menu-wrapper {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		.filter-menu-icon {
+			height: 100%;
+			width: 100%;
+			padding: 0.5rem 1rem;
+			border-radius: 0.5rem;
+			background-color: var(
+				--color-bg-secondary-dark
+			);
+			color: var(--color-text-primary);
+			font-size: 1rem;
+			transition: all 0.2s ease-in-out;
+
+			&:hover {
+				cursor: pointer;
+				background-color: var(
+					--color-bg-secondary-light
+				);
+				color: var(--color-text-secondary);
+			}
+		}
+
+		.filter-menu {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			gap: 0.5rem;
+			width: 250px;
+			max-width: 50rem;
+			padding: 1rem;
+			border: 1px solid
+				var(--color-bg-secondary-dark);
+			border-radius: 0.5rem;
+			background-color: var(--color-bg-secondary);
+			color: var(--color-text-primary);
+			font-size: 1rem;
+			transition: all 0.2s ease-in-out;
+
+			.filter-menu-item {
+				height: 100%;
+				width: 100%;
+				padding: 0.5rem 1rem;
+				border-radius: 0.5rem;
+				background-color: var(
+					--color-bg-secondary-dark
+				);
+				color: var(--color-text-primary);
+				font-size: 1rem;
+				transition: all 0.2s ease-in-out;
+
+				&:hover {
+					cursor: pointer;
+					background-color: var(
+						--color-bg-secondary-light
+					);
+					color: var(--color-text-secondary);
+				}
+
+				input {
+					background-color: var(
+						--color-bg-secondary-dark
+					);
+					box-shadow: none;
+					border: 1px solid #333;
+					border-radius: 3px;
+				}
+
+				select {
+					background-color: var(
+						--color-bg-secondary-dark
+					);
+					border: 1px solid #333;
+					border-radius: 3px;
+				}
+			}
 		}
 	}
 }
