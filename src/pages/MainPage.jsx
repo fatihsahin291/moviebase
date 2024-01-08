@@ -3,7 +3,7 @@ import SearchBar from "../components/SearchBar";
 
 function MainPage() {
 	return (
-		<div>
+		<div className="main-page">
 			<SearchBar />
 			<Dashboard />
 		</div>

@@ -17,7 +17,6 @@ export default function useMovies(search) {
 				);
 				const data = await response.json();
 
-				console.log(data);
 				if (data.Search) {
 					setMovies(data.Search);
 				} else {

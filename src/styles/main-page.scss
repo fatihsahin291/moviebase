@@ -1,0 +1,10 @@
+@import url(./searchbar.scss);
+
+.main-page {
+	background-color: var(--color-bg-primary);
+	color: var(--color-text-primary);
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}

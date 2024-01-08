@@ -5,7 +5,7 @@ function SearchBar() {
 				type="text"
 				className="searchbar-input"
 			/>
-			<button className="searchabar-btn">
+			<button className="searchbar-btn">
 				Search
 			</button>
 		</div>
