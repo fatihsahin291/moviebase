@@ -1,6 +1,6 @@
 import { KEY } from "../utils/constants";
 
-export default async function getMovieDetails(
+export default async function useMovieDetails(
 	id
 ) {
 	try {
@@ -8,9 +8,8 @@ export default async function getMovieDetails(
 			`https://www.omdbapi.com/?apikey=${KEY}&i=${id}`
 		);
 		const data = await response.json();
-
 		return data;
 	} catch (error) {
-		console.log(error);
+		return error;
 	}
 }

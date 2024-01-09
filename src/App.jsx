@@ -7,8 +7,23 @@ import {
 import "./styles/App.scss";
 import MainPage from "./pages/MainPage";
 import PageNotFound from "./pages/PageNotFound";
+import Dashboard from "./components/Dashboard";
+import useMovies from "./hooks/useMovies";
+import { useState } from "react";
+import MovieDetails from "./components/MovieDetails";
 
 function App() {
+	const [searchOptions, setSearchOptions] =
+		useState({
+			searchTerm: "",
+			searchYear: "",
+			searchType: "",
+		});
+
+	const { movies, loading, error } = useMovies(
+		searchOptions
+	);
+
 	return (
 		<div className="app">
 			<BrowserRouter>
@@ -23,9 +38,30 @@ function App() {
 
 					<Route
 						path="dashboard"
-						element={<MainPage />}
-					/>
-					<Route path=":searchTerm" />
+						element={
+							<MainPage
+								searchOptions={searchOptions}
+								setSearchOptions={
+									setSearchOptions
+								}
+							/>
+						}
+					>
+						<Route
+							path=""
+							element={
+								<Dashboard
+									movies={movies}
+									loading={loading}
+									error={error}
+								/>
+							}
+						/>
+						<Route
+							path="movie:imdbID"
+							element={<MovieDetails />}
+						/>
+					</Route>
 
 					<Route
 						path="*"

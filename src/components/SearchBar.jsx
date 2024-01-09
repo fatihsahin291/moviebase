@@ -12,6 +12,7 @@ function SearchBar({
 		<div className="searchbar">
 			<input
 				type="text"
+				spellCheck="false"
 				className="searchbar-input"
 				placeholder="Search for a movie..."
 				onChange={(e) =>

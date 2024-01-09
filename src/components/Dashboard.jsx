@@ -13,7 +13,7 @@ function Dashboard({ movies, loading, error }) {
 			{movies &&
 				movies.map((movie) => (
 					<MoviePreview
-						key={movie.MovieID}
+						key={movie.imdbID}
 						movie={movie}
 					/>
 				))}

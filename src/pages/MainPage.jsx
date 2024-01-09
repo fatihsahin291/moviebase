@@ -1,16 +1,11 @@
-import { useState } from "react";
-import Dashboard from "../components/Dashboard";
 import SearchBar from "../components/SearchBar";
-import useMovies from "../helpers/useMovies";
+import useMovies from "../hooks/useMovies";
+import { Outlet } from "react-router-dom";
 
-function MainPage() {
-	const [searchOptions, setSearchOptions] =
-		useState({
-			searchTerm: "",
-			searchYear: "",
-			searchType: "",
-		});
-
+function MainPage({
+	searchOptions,
+	setSearchOptions,
+}) {
 	const { movies, loading, error } = useMovies(
 		searchOptions
 	);
@@ -23,11 +18,7 @@ function MainPage() {
 				searchOptions={searchOptions}
 				setSearchOptions={setSearchOptions}
 			/>
-			<Dashboard
-				movies={movies}
-				loading={loading}
-				error={error}
-			/>
+			<Outlet />
 		</div>
 	);
 }
