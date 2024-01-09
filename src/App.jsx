@@ -24,6 +24,8 @@ function App() {
 		searchOptions
 	);
 
+	console.log(movies);
+
 	return (
 		<div className="app">
 			<BrowserRouter>
@@ -58,7 +60,7 @@ function App() {
 							}
 						/>
 						<Route
-							path="movie:imdbID"
+							path="movie"
 							element={<MovieDetails />}
 						/>
 					</Route>

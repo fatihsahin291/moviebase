@@ -55,7 +55,7 @@ function SearchBar({
 
 						<div className="filter-menu-item">
 							<label htmlFor="search-type">
-								Type:
+								Type:{"  "}
 							</label>
 							<select
 								id="search-type"

@@ -34,7 +34,7 @@ export default function useMovies(
 			}
 		};
 		getMovies();
-	}, [searchTerm, searchYear, searchType]);
+	}, [searchTerm, searchYear, searchType, page]);
 
 	return { movies, loading, error };
 }

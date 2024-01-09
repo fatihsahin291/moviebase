@@ -1,11 +1,137 @@
 import useMovieDetails from "../hooks/useMovieDetails";
+import InternetRatings from "./InternetRatings";
+
+import {
+	BsStar,
+	BsStarFill,
+	BsStarHalf,
+} from "react-icons/bs";
+import {
+	SiImdb,
+	SiRottentomatoes,
+} from "react-icons/si";
 
 function MovieDetails() {
-	const { data } = useMovieDetails("tt1520211");
+	const { movie, loading, error } =
+		useMovieDetails("tt1288558");
 
-	console.log(data);
+	const {
+		Poster,
+		Title,
+		Year,
+		Rated,
+		Released,
+		Runtime,
+		Genre,
+		Director,
+		Writer,
+		Actors,
+		Plot,
+		Language,
+		Country,
+		Awards,
+		Ratings,
+		Metascore,
+		imdbRating,
+		imdbVotes,
+		imdbID,
+		Type,
+		DVD,
+		BoxOffice,
+		Production,
+		Website,
+	} = movie;
 
-	return <div></div>;
+	console.log(movie);
+
+	return (
+		<div className="movie-details">
+			<div className="movie-details-heading">
+				<div className="movie-details-poster">
+					<img src={Poster} alt={Title} />
+				</div>
+				<div className="movie-details-title">
+					<h2>{Title}</h2>
+					<h3>Year: {Year}</h3>
+					<h3>Runtime: {Runtime}</h3>
+					<h3>Genre: {Genre}</h3>
+					<h3>Rated: {Rated}</h3>
+				</div>
+				<InternetRatings ratings={Ratings} />
+			</div>
+			<div className="divider"></div>
+		</div>
+	);
 }
 
 export default MovieDetails;
+
+// Actors
+// :
+// "Jane Levy, Shiloh Fernandez, Jessica Lucas"
+// Awards
+// :
+// "6 wins & 19 nominations"
+// BoxOffice
+// :
+// "$54,239,856"
+// Country
+// :
+// "United States, New Zealand, Australia"
+// DVD
+// :
+// "16 Jul 2013"
+// Director
+// :
+// "Fede Alvarez"
+// Genre
+// :
+// "Horror"
+// Language
+// :
+// "English, Welsh"
+// Metascore
+// :
+// "57"
+// Plot
+// :
+// "Five friends head to a remote cabin, where the discovery of a Book of the Dead leads them to unwittingly summon up demons living in the nearby woods."
+// Poster
+// :
+// "https://m.media-amazon.com/images/M/MV5BYzk2ZTVhOWMtMWQxYS00OWQzLWFmY2QtODQ4NGFmNGQxZWVmXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_SX300.jpg"
+// Production
+// :
+// "N/A"
+// Rated
+// :
+// "R"
+// Ratings
+// :
+// (3) [{…}, {…}, {…}]
+// Released
+// :
+// "05 Apr 2013"
+// Response
+// :
+// "True"
+// Runtime
+// :
+// "91 min"
+// Title
+// :
+// "Evil Dead"
+// Type
+// :
+// "movie"
+// Website
+// :
+// "N/A"
+// Writer
+// :
+// "Fede Alvarez, Rodo Sayagues, Sam Raimi"
+// Year
+// :
+// "2013"
+// imdbID: "tt1288558"
+// imdbRating: "6.5"
+// imdbVotes: "194,872"

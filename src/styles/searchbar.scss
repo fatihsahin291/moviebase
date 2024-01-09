@@ -32,6 +32,10 @@
 		}
 	}
 
+	.searchbar-input::placeholder {
+		color: var(--color-text-primary);
+	}
+
 	.searchbar-btn {
 		height: 70%;
 		width: 5rem;
