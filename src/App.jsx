@@ -60,7 +60,7 @@ function App() {
 							}
 						/>
 						<Route
-							path="movie"
+							path="movie/:movieID"
 							element={<MovieDetails />}
 						/>
 					</Route>

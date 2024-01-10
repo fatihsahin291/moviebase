@@ -1,8 +1,19 @@
+import { useNavigate } from "react-router-dom";
+
 function MoviePreview({ movie }) {
 	const { Title, Year, Type, Poster } = movie;
 
+	const navigate = useNavigate();
+
+	function handleClick() {
+		navigate(`/dashboard/movie/${movie.imdbID}`);
+	}
+
 	return (
-		<div className="movie-preview">
+		<div
+			className="movie-preview"
+			onClick={handleClick}
+		>
 			<img
 				src={Poster}
 				alt={Title}

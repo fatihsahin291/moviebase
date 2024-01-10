@@ -1,19 +1,12 @@
+import { useParams } from "react-router-dom";
 import useMovieDetails from "../hooks/useMovieDetails";
 import InternetRatings from "./InternetRatings";
 
-import {
-	BsStar,
-	BsStarFill,
-	BsStarHalf,
-} from "react-icons/bs";
-import {
-	SiImdb,
-	SiRottentomatoes,
-} from "react-icons/si";
-
 function MovieDetails() {
+	const movieID = useParams().movieID;
+
 	const { movie, loading, error } =
-		useMovieDetails("tt1288558");
+		useMovieDetails(movieID);
 
 	const {
 		Poster,
@@ -56,10 +49,32 @@ function MovieDetails() {
 					<h3>Runtime: {Runtime}</h3>
 					<h3>Genre: {Genre}</h3>
 					<h3>Rated: {Rated}</h3>
+					<h3>Released: {Released}</h3>
 				</div>
-				<InternetRatings ratings={Ratings} />
+				<InternetRatings Ratings={Ratings} />
 			</div>
 			<div className="divider"></div>
+
+			<div className="movie-details-plot">
+				<h3>Plot</h3>
+				<p>{Plot}</p>
+			</div>
+
+			<div className="movie-details-cast">
+				<h3>Cast</h3>
+				<p>{Actors}</p>
+			</div>
+
+			<div className="movie-details-crew">
+				<h3>Crew</h3>
+				<p>Director: {Director}</p>
+				<p>Writer(s): {Writer}</p>
+			</div>
+
+			<div className="movie-details-awards">
+				<h3>Awards</h3>
+				<p>{Awards}</p>
+			</div>
 		</div>
 	);
 }

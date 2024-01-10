@@ -8,6 +8,11 @@ function SearchBar({
 	const [showFilterMenu, setShowFilterMenu] =
 		useState(false);
 
+	const [
+		tempSearchOptions,
+		setTempSearchOptions,
+	] = useState(searchOptions);
+
 	return (
 		<div className="searchbar">
 			<input
@@ -15,9 +20,10 @@ function SearchBar({
 				spellCheck="false"
 				className="searchbar-input"
 				placeholder="Search for a movie..."
+				value={tempSearchOptions.searchTerm}
 				onChange={(e) =>
-					setSearchOptions({
-						...searchOptions,
+					setTempSearchOptions({
+						...tempSearchOptions,
 						searchTerm: e.target.value,
 					})
 				}
@@ -43,10 +49,12 @@ function SearchBar({
 								type="text"
 								id="search-year"
 								name="search-year"
-								value={searchOptions.searchYear}
+								value={
+									tempSearchOptions.searchYear
+								}
 								onChange={(e) =>
-									setSearchOptions({
-										...searchOptions,
+									setTempSearchOptions({
+										...tempSearchOptions,
 										searchYear: e.target.value,
 									})
 								}
@@ -60,10 +68,12 @@ function SearchBar({
 							<select
 								id="search-type"
 								name="search-type"
-								value={searchOptions.searchType}
+								value={
+									tempSearchOptions.searchType
+								}
 								onChange={(e) =>
-									setSearchOptions({
-										...searchOptions,
+									setTempSearchOptions({
+										...tempSearchOptions,
 										searchType: e.target.value,
 									})
 								}
@@ -83,6 +93,31 @@ function SearchBar({
 					</div>
 				)}
 			</div>
+
+			<button
+				className="searchbar-btn"
+				onClick={() =>
+					setTempSearchOptions({
+						...tempSearchOptions,
+						searchTerm: "",
+						searchYear: "",
+						searchType: "",
+					})
+				}
+			>
+				Clear
+			</button>
+
+			<button
+				className="searchbar-btn"
+				onClick={() =>
+					setSearchOptions({
+						...tempSearchOptions,
+					})
+				}
+			>
+				Search
+			</button>
 		</div>
 	);
 }
