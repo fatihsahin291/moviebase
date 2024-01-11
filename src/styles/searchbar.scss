@@ -38,8 +38,7 @@
 
 	.searchbar-btn {
 		height: 70%;
-		width: 5rem;
-		border: none;
+		padding: 0.5rem 1rem;
 		border-radius: 0.5rem;
 		background-color: var(
 			--color-bg-secondary-dark
@@ -47,6 +46,7 @@
 		color: var(--color-text-primary);
 		font-size: 1rem;
 		transition: all 0.2s ease-in-out;
+		border: none;
 
 		&:hover {
 			cursor: pointer;

@@ -8,7 +8,7 @@ import {
 	SiRottentomatoes,
 } from "react-icons/si";
 
-function InternetRatings({ Ratings }) {
+function InternetRatings({ Ratings, imdbVotes }) {
 	console.log(Ratings);
 	return (
 		<div className="internet-ratings">

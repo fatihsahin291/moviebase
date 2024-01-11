@@ -51,102 +51,47 @@ function MovieDetails() {
 					<h3>Rated: {Rated}</h3>
 					<h3>Released: {Released}</h3>
 				</div>
-				<InternetRatings Ratings={Ratings} />
+				<InternetRatings
+					Ratings={Ratings}
+					imdbVotes={imdbVotes}
+				/>
 			</div>
 			<div className="divider"></div>
 
-			<div className="movie-details-plot">
-				<h3>Plot</h3>
-				<p>{Plot}</p>
-			</div>
-
-			<div className="movie-details-cast">
-				<h3>Cast</h3>
-				<p>{Actors}</p>
-			</div>
-
-			<div className="movie-details-crew">
-				<h3>Crew</h3>
-				<p>Director: {Director}</p>
-				<p>Writer(s): {Writer}</p>
-			</div>
-
-			<div className="movie-details-awards">
-				<h3>Awards</h3>
-				<p>{Awards}</p>
+			<div className="movie-details-body">
+				<div className="movie-details-body-item movie-details-body-left">
+					<h3>Plot</h3>
+					<p>{Plot ? Plot : "N/A"}</p>
+					<h3>Actors</h3>
+					<p>{Actors ? Actors : "N/A"}</p>
+					<h3>Director</h3>
+					<p>{Director ? Director : "N/A"}</p>
+					<h3>Writer</h3>
+					<p>{Writer ? Writer : "N/A"}</p>
+					<h3>Language</h3>
+					<p>{Language ? Language : "N/A"}</p>
+					<h3>Country</h3>
+					<p>{Country ? Country : "N/A"}</p>
+				</div>
+				<div className="movie-details-body-item movie-details-body-right">
+					<h3>Awards</h3>
+					<p>{Awards ? Awards : "N/A"}</p>
+					<h3>imdbVotes</h3>
+					<p>{imdbVotes ? imdbVotes : "N/A"}</p>
+					<h3>Type</h3>
+					<p>{Type ? Type : "N/A"}</p>
+					<h3>DVD</h3>
+					<p>{DVD ? DVD : "N/A"}</p>
+					<h3>BoxOffice</h3>
+					<p>{BoxOffice ? BoxOffice : "N/A"}</p>
+					<h3>Production</h3>
+					<p>{Production ? Production : "N/A"}</p>
+					<h3>Website</h3>
+					<p>{Website ? Website : "N/A"}</p>
+				</div>
 			</div>
 		</div>
 	);
 }
 
 export default MovieDetails;
-
-// Actors
-// :
-// "Jane Levy, Shiloh Fernandez, Jessica Lucas"
-// Awards
-// :
-// "6 wins & 19 nominations"
-// BoxOffice
-// :
-// "$54,239,856"
-// Country
-// :
-// "United States, New Zealand, Australia"
-// DVD
-// :
-// "16 Jul 2013"
-// Director
-// :
-// "Fede Alvarez"
-// Genre
-// :
-// "Horror"
-// Language
-// :
-// "English, Welsh"
-// Metascore
-// :
-// "57"
-// Plot
-// :
-// "Five friends head to a remote cabin, where the discovery of a Book of the Dead leads them to unwittingly summon up demons living in the nearby woods."
-// Poster
-// :
-// "https://m.media-amazon.com/images/M/MV5BYzk2ZTVhOWMtMWQxYS00OWQzLWFmY2QtODQ4NGFmNGQxZWVmXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_SX300.jpg"
-// Production
-// :
-// "N/A"
-// Rated
-// :
-// "R"
-// Ratings
-// :
-// (3) [{…}, {…}, {…}]
-// Released
-// :
-// "05 Apr 2013"
-// Response
-// :
-// "True"
-// Runtime
-// :
-// "91 min"
-// Title
-// :
-// "Evil Dead"
-// Type
-// :
-// "movie"
-// Website
-// :
-// "N/A"
-// Writer
-// :
-// "Fede Alvarez, Rodo Sayagues, Sam Raimi"
-// Year
-// :
-// "2013"
-// imdbID: "tt1288558"
-// imdbRating: "6.5"
-// imdbVotes: "194,872"

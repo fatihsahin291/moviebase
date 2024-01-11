@@ -1,5 +1,6 @@
 import MoviePreview from "./MoviePreview";
 import LoadingIndicator from "./LoadingIndicator";
+import { memo } from "react";
 
 function Dashboard({ movies, loading, error }) {
 	if (loading) {
@@ -20,5 +21,7 @@ function Dashboard({ movies, loading, error }) {
 		</div>
 	);
 }
+
+memo(Dashboard);
 
 export default Dashboard;

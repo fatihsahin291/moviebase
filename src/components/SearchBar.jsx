@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FiFilter } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 function SearchBar({
 	searchOptions,
@@ -13,8 +14,23 @@ function SearchBar({
 		setTempSearchOptions,
 	] = useState(searchOptions);
 
+	const navigate = useNavigate();
+
 	return (
 		<div className="searchbar">
+			<button
+				className="searchbar-btn"
+				onClick={() => navigate(-1)}
+			>
+				&larr; Back
+			</button>
+			<button
+				className="searchbar-btn"
+				onClick={() => navigate(1)}
+			>
+				Forward &rarr;
+			</button>
+
 			<input
 				type="text"
 				spellCheck="false"
