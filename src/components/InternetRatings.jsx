@@ -9,7 +9,6 @@ import {
 } from "react-icons/si";
 
 function InternetRatings({ Ratings, imdbVotes }) {
-	console.log(Ratings);
 	return (
 		<div className="internet-ratings">
 			<h3>Internet Ratings</h3>
@@ -27,6 +26,9 @@ function InternetRatings({ Ratings, imdbVotes }) {
 								>
 									<SiImdb className="rating-source-icon" />
 									<p>{rating.Value}</p>
+									{imdbVotes && (
+										<p>({imdbVotes})</p>
+									)}
 								</div>
 							);
 						} else if (

@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import useMovieDetails from "../hooks/useMovieDetails";
 import InternetRatings from "./InternetRatings";
+import LoadingIndicator from "./LoadingIndicator";
+import Error from "./Error";
 
 function MovieDetails() {
 	const movieID = useParams().movieID;
@@ -24,10 +26,7 @@ function MovieDetails() {
 		Country,
 		Awards,
 		Ratings,
-		Metascore,
-		imdbRating,
 		imdbVotes,
-		imdbID,
 		Type,
 		DVD,
 		BoxOffice,
@@ -36,6 +35,24 @@ function MovieDetails() {
 	} = movie;
 
 	console.log(movie);
+
+	if (loading) {
+		return (
+			<div className="movie-details">
+				<LoadingIndicator />
+			</div>
+		);
+	}
+
+	if (error) {
+		return (
+			<div className="movie-details">
+				<Error error={error} />
+			</div>
+		);
+	}
+
+	console.log(error);
 
 	return (
 		<div className="movie-details">
