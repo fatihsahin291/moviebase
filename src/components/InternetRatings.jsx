@@ -9,6 +9,17 @@ import {
 } from "react-icons/si";
 
 function InternetRatings({ Ratings, imdbVotes }) {
+	// TODO: when Ratings is empty array, display "No rating."
+	if (!Ratings)
+		return (
+			<div className="internet-ratings">
+				<h3>Internet Ratings</h3>
+				<p>No rating.</p>
+			</div>
+		);
+
+	console.log(Ratings);
+
 	return (
 		<div className="internet-ratings">
 			<h3>Internet Ratings</h3>

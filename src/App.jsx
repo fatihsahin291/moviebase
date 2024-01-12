@@ -20,11 +20,12 @@ function App() {
 			searchType: "",
 		});
 
-	const { movies, loading, error } = useMovies(
-		searchOptions
-	);
+	const [page, setPage] = useState(1);
 
-	console.log(movies);
+	const { movies, loading, error } = useMovies(
+		searchOptions,
+		page
+	);
 
 	return (
 		<div className="app">
@@ -42,7 +43,6 @@ function App() {
 						path="dashboard"
 						element={
 							<MainPage
-								searchOptions={searchOptions}
 								setSearchOptions={
 									setSearchOptions
 								}
@@ -56,6 +56,20 @@ function App() {
 									movies={movies}
 									loading={loading}
 									error={error}
+									page={page}
+									setPage={setPage}
+								/>
+							}
+						/>
+						<Route
+							path="?sterm=:sterm&syear=:syear&stype:stype&page=:page"
+							element={
+								<Dashboard
+									movies={movies}
+									loading={loading}
+									error={error}
+									page={page}
+									setPage={setPage}
 								/>
 							}
 						/>

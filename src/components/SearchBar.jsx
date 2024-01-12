@@ -1,20 +1,61 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { FiFilter } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
+import {
+	useLocation,
+	useNavigate,
+	useParams,
+} from "react-router-dom";
 
-function SearchBar({
-	searchOptions,
-	setSearchOptions,
-}) {
+function SearchBar({ setSearchOptions }) {
 	const [showFilterMenu, setShowFilterMenu] =
 		useState(false);
+
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	const queryParams = new URLSearchParams(
+		location.search
+	);
+	const sterm = queryParams.get("sterm");
+	const syear = queryParams.get("syear");
+	const stype = queryParams.get("stype");
+
+	console.log(sterm, syear, stype);
 
 	const [
 		tempSearchOptions,
 		setTempSearchOptions,
-	] = useState(searchOptions);
+	] = useState({
+		searchTerm: sterm ? sterm : "",
+		searchYear:
+			!syear || syear !== "all" ? "" : syear,
+		searchType:
+			!stype || stype !== "all" ? "" : stype,
+	});
 
-	const navigate = useNavigate();
+	function handleSearch() {
+		setSearchOptions({
+			...tempSearchOptions,
+		});
+
+		navigate(
+			`?sterm=${
+				tempSearchOptions.searchTerm
+					? tempSearchOptions.searchTerm
+					: "none"
+			}&syear=${
+				tempSearchOptions.searchYear
+					? tempSearchOptions.searchYear
+					: "all"
+			}&stype=${
+				tempSearchOptions.searchType
+					? tempSearchOptions.searchType
+					: "all"
+			}&page=1`
+		);
+	}
+
+	// "?sterm=:sterm&syear=:syear&stype:stype&page=:page"
 
 	return (
 		<div className="searchbar">
@@ -66,7 +107,10 @@ function SearchBar({
 								id="search-year"
 								name="search-year"
 								value={
-									tempSearchOptions.searchYear
+									tempSearchOptions.searchYear ===
+									"all"
+										? ""
+										: tempSearchOptions.searchYear
 								}
 								onChange={(e) =>
 									setTempSearchOptions({
@@ -85,7 +129,11 @@ function SearchBar({
 								id="search-type"
 								name="search-type"
 								value={
-									tempSearchOptions.searchType
+									tempSearchOptions?.searchType ===
+										"all" ||
+									!tempSearchOptions.searchType
+										? ""
+										: tempSearchOptions.searchType
 								}
 								onChange={(e) =>
 									setTempSearchOptions({
@@ -126,11 +174,7 @@ function SearchBar({
 
 			<button
 				className="searchbar-btn"
-				onClick={() =>
-					setSearchOptions({
-						...tempSearchOptions,
-					})
-				}
+				onClick={handleSearch}
 			>
 				Search
 			</button>
