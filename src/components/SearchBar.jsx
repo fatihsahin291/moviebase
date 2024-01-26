@@ -1,9 +1,8 @@
-import { useCallback, useState } from "react";
+import { useEffect, useState } from "react";
 import { FiFilter } from "react-icons/fi";
 import {
 	useLocation,
 	useNavigate,
-	useParams,
 } from "react-router-dom";
 
 function SearchBar({ setSearchOptions }) {
@@ -54,8 +53,6 @@ function SearchBar({ setSearchOptions }) {
 			}&page=1`
 		);
 	}
-
-	// "?sterm=:sterm&syear=:syear&stype:stype&page=:page"
 
 	return (
 		<div className="searchbar">

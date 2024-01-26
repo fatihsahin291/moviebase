@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
 
 @import url(./main-page.scss);
+@import url(./login-page.scss);
 @import url(./loading-indicator.scss);
 @import url(./error.scss);
 @import url(./page-not-found.scss);
@@ -63,7 +64,6 @@
 }
 
 ::-webkit-scrollbar-track {
-	-webkit-box-shadow: inset 0 0 6px
-		rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 	border-radius: 1rem;
 }

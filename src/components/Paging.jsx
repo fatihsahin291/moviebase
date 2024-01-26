@@ -1,22 +1,46 @@
+import { useNavigate } from "react-router-dom";
 import Page from "./Page";
 
 function Paging({ page, setPage }) {
 	const pageNum = 30;
+
+	const navigate = useNavigate();
+
+	const queryParams = new URLSearchParams(
+		window.location.search
+	);
+	const pageParam = queryParams.get("page");
+	const sterm = queryParams.get("sterm");
+	const syear = queryParams.get("syear");
+	const stype = queryParams.get("stype");
+
+	function handlePageClick(step) {
+		setPage(page + step);
+
+		navigate(
+			`?sterm=${sterm}&syear=${syear}&stype=${stype}&page=${
+				page + step
+			}`
+		);
+	}
 
 	return (
 		<div className="paging">
 			<button
 				className="paging-button"
 				disabled={page === 1}
-				onClick={() => setPage(page - 1)}
+				onClick={() => handlePageClick(-1)}
 			>
 				Previous
 			</button>
 
 			{Array(pageNum)
-				.fill()
+				.fill(30)
 				.map((_, index) =>
-					index > page - 5 && index < page + 5 ? (
+					index < 3 ||
+					(index > page - 5 &&
+						index < page + 5) ||
+					index > 26 ? (
 						index + 1 === page ? (
 							<Page
 								key={index}
@@ -38,7 +62,7 @@ function Paging({ page, setPage }) {
 			<button
 				className="paging-button"
 				disabled={page === pageNum}
-				onClick={() => setPage(page + 1)}
+				onClick={() => handlePageClick(1)}
 			>
 				Next
 			</button>
