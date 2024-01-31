@@ -1,72 +1,45 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FiFilter } from "react-icons/fi";
-import {
-	useLocation,
-	useNavigate,
-} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function SearchBar({ setSearchOptions }) {
-	const [showFilterMenu, setShowFilterMenu] =
-		useState(false);
+	const [showFilterMenu, setShowFilterMenu] = useState(false);
 
 	const navigate = useNavigate();
 	const location = useLocation();
 
-	const queryParams = new URLSearchParams(
-		location.search
-	);
+	const queryParams = new URLSearchParams(location.search);
 	const sterm = queryParams.get("sterm");
 	const syear = queryParams.get("syear");
 	const stype = queryParams.get("stype");
 
-	console.log(sterm, syear, stype);
-
-	const [
-		tempSearchOptions,
-		setTempSearchOptions,
-	] = useState({
+	const [tempSearchOptions, setTempSearchOptions] = useState({
 		searchTerm: sterm ? sterm : "",
-		searchYear:
-			!syear || syear !== "all" ? "" : syear,
-		searchType:
-			!stype || stype !== "all" ? "" : stype,
+		searchYear: syear || syear !== "all" ? "" : syear,
+		searchType: stype || stype !== "all" ? "" : stype,
 	});
 
 	function handleSearch() {
-		setSearchOptions({
-			...tempSearchOptions,
-		});
+		setSearchOptions(tempSearchOptions);
 
 		navigate(
 			`?sterm=${
-				tempSearchOptions.searchTerm
-					? tempSearchOptions.searchTerm
-					: "none"
+				tempSearchOptions.searchTerm ? tempSearchOptions.searchTerm : "none"
 			}&syear=${
-				tempSearchOptions.searchYear
-					? tempSearchOptions.searchYear
-					: "all"
+				tempSearchOptions.searchYear ? tempSearchOptions.searchYear : "all"
 			}&stype=${
-				tempSearchOptions.searchType
-					? tempSearchOptions.searchType
-					: "all"
+				tempSearchOptions.searchType ? tempSearchOptions.searchType : "all"
 			}&page=1`
 		);
 	}
 
 	return (
 		<div className="searchbar">
-			<button
-				className="searchbar-btn"
-				onClick={() => navigate(-1)}
-			>
-				&larr; Back
+			<button className="searchbar-btn" onClick={() => navigate(-1)}>
+				&lang; Back
 			</button>
-			<button
-				className="searchbar-btn"
-				onClick={() => navigate(1)}
-			>
-				Forward &rarr;
+			<button className="searchbar-btn" onClick={() => navigate(1)}>
+				Forward &rang;
 			</button>
 
 			<input
@@ -86,9 +59,7 @@ function SearchBar({ setSearchOptions }) {
 			<div className="filter-menu-wrapper">
 				<div
 					className="filter-menu-icon"
-					onClick={() =>
-						setShowFilterMenu(!showFilterMenu)
-					}
+					onClick={() => setShowFilterMenu(!showFilterMenu)}
 				>
 					<FiFilter />
 				</div>
@@ -96,16 +67,13 @@ function SearchBar({ setSearchOptions }) {
 				{showFilterMenu && (
 					<div className="filter-menu">
 						<div className="filter-menu-item">
-							<label htmlFor="search-year">
-								Year:
-							</label>
+							<label htmlFor="search-year">Year:</label>
 							<input
 								type="text"
 								id="search-year"
 								name="search-year"
 								value={
-									tempSearchOptions.searchYear ===
-									"all"
+									tempSearchOptions.searchYear === "all"
 										? ""
 										: tempSearchOptions.searchYear
 								}
@@ -119,15 +87,12 @@ function SearchBar({ setSearchOptions }) {
 						</div>
 
 						<div className="filter-menu-item">
-							<label htmlFor="search-type">
-								Type:{"  "}
-							</label>
+							<label htmlFor="search-type">Type:{"  "}</label>
 							<select
 								id="search-type"
 								name="search-type"
 								value={
-									tempSearchOptions?.searchType ===
-										"all" ||
+									tempSearchOptions?.searchType === "all" ||
 									!tempSearchOptions.searchType
 										? ""
 										: tempSearchOptions.searchType
@@ -140,15 +105,9 @@ function SearchBar({ setSearchOptions }) {
 								}
 							>
 								<option value="">All</option>
-								<option value="movie">
-									Movie
-								</option>
-								<option value="series">
-									Series
-								</option>
-								<option value="episode">
-									Episode
-								</option>
+								<option value="movie">Movie</option>
+								<option value="series">Series</option>
+								<option value="episode">Episode</option>
 							</select>
 						</div>
 					</div>
@@ -169,10 +128,7 @@ function SearchBar({ setSearchOptions }) {
 				Clear
 			</button>
 
-			<button
-				className="searchbar-btn"
-				onClick={handleSearch}
-			>
+			<button className="searchbar-btn" onClick={handleSearch}>
 				Search
 			</button>
 		</div>

@@ -1,12 +1,5 @@
-import {
-	BsStar,
-	BsStarFill,
-	BsStarHalf,
-} from "react-icons/bs";
-import {
-	SiImdb,
-	SiRottentomatoes,
-} from "react-icons/si";
+import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
+import { SiImdb, SiRottentomatoes } from "react-icons/si";
 
 function InternetRatings({ Ratings, imdbVotes }) {
 	// TODO: when Ratings is empty array, display "No rating."
@@ -18,18 +11,13 @@ function InternetRatings({ Ratings, imdbVotes }) {
 			</div>
 		);
 
-	console.log(Ratings);
-
 	return (
 		<div className="internet-ratings">
 			<h3>Internet Ratings</h3>
 			<div className="internet-ratings-container">
 				{Ratings &&
 					Ratings.map((rating) => {
-						if (
-							rating.Source ===
-							"Internet Movie Database"
-						) {
+						if (rating.Source === "Internet Movie Database") {
 							return (
 								<div
 									className="internet-ratings-container-item"
@@ -37,14 +25,10 @@ function InternetRatings({ Ratings, imdbVotes }) {
 								>
 									<SiImdb className="rating-source-icon" />
 									<p>{rating.Value}</p>
-									{imdbVotes && (
-										<p>({imdbVotes})</p>
-									)}
+									{imdbVotes && <p>({imdbVotes})</p>}
 								</div>
 							);
-						} else if (
-							rating.Source === "Rotten Tomatoes"
-						) {
+						} else if (rating.Source === "Rotten Tomatoes") {
 							return (
 								<div
 									className="internet-ratings-container-item"

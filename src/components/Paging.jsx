@@ -1,14 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import Page from "./Page";
 
-function Paging({ page, setPage }) {
+function Paging({ page, setPage, useMovies }) {
 	const pageNum = 30;
 
 	const navigate = useNavigate();
 
-	const queryParams = new URLSearchParams(
-		window.location.search
-	);
+	const queryParams = new URLSearchParams(window.location.search);
 	const pageParam = queryParams.get("page");
 	const sterm = queryParams.get("sterm");
 	const syear = queryParams.get("syear");
@@ -18,9 +16,7 @@ function Paging({ page, setPage }) {
 		setPage(page + step);
 
 		navigate(
-			`?sterm=${sterm}&syear=${syear}&stype=${stype}&page=${
-				page + step
-			}`
+			`?sterm=${sterm}&syear=${syear}&stype=${stype}&page=${page + step}`
 		);
 	}
 
@@ -37,10 +33,7 @@ function Paging({ page, setPage }) {
 			{Array(pageNum)
 				.fill(30)
 				.map((_, index) =>
-					index < 3 ||
-					(index > page - 5 &&
-						index < page + 5) ||
-					index > 26 ? (
+					index < 3 || (index > page - 5 && index < page + 5) || index > 26 ? (
 						index + 1 === page ? (
 							<Page
 								key={index}

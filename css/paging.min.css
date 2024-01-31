@@ -1,0 +1,1 @@
+@import"./page.scss";.paging{display:flex;justify-content:center;align-items:center;gap:10px}.paging .paging-button{width:100px;height:30px;border-radius:50px;border:1px solid #000;background-color:var(--color-bg-secondary-light);color:var(--color-text-primary);display:flex;justify-content:center;align-items:center;cursor:pointer}/*# sourceMappingURL=paging.min.css.map */

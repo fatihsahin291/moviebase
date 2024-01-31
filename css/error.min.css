@@ -1,0 +1,1 @@
+.error{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;background:var(--color-bg-primary);color:var(--color-text-primary)}.error .error-title{font-size:5rem;font-weight:700;margin-bottom:1rem}.error .error-message{font-size:1.5rem;font-weight:400;margin-bottom:1rem}/*# sourceMappingURL=error.min.css.map */

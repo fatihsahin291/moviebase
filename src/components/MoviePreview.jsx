@@ -10,19 +10,12 @@ function MoviePreview({ movie }) {
 	}
 
 	return (
-		<div
-			className="movie-preview"
-			onClick={handleClick}
-		>
-			<img
-				src={Poster}
-				alt={Title}
-				className="movie-img"
-			/>
+		<div className="movie-preview" onClick={handleClick}>
+			<img src={Poster} alt={Title} className="movie-img" />
 			<div className="movie-info">
 				<h3 className="movie-title">{Title}</h3>
 				<p className="movie-year">
-					Year(s): {Year}
+					{Type === "series" ? "years" : "year"}: {Year}
 				</p>
 				<p className="movie-type">Type: {Type}</p>
 			</div>

@@ -3,13 +3,7 @@ import LoadingIndicator from "./LoadingIndicator";
 import Paging from "./Paging";
 import { memo } from "react";
 
-function Dashboard({
-	movies,
-	loading,
-	error,
-	page,
-	setPage,
-}) {
+function Dashboard({ movies, loading, error, page, setPage }) {
 	if (loading) {
 		return <LoadingIndicator />;
 	}
@@ -20,17 +14,22 @@ function Dashboard({
 
 	return (
 		<div className="dashboard">
-			{movies &&
-				movies.map((movie) => (
-					<MoviePreview
-						key={movie.imdbID}
-						movie={movie}
-					/>
-				))}
+			{movies.length > 0
+				? movies.map((movie) => (
+						<MoviePreview key={movie.imdbID} movie={movie} />
+				  ))
+				: localStorage.getItem("movies") &&
+				  JSON.parse(localStorage.getItem("movies")).map((movie) => (
+						<MoviePreview key={movie.imdbID} movie={movie} />
+				  ))}
 
 			{movies.length ? (
 				<Paging page={page} setPage={setPage} />
-			) : null}
+			) : (
+				localStorage.getItem("movies") && (
+					<Paging page={page} setPage={setPage} />
+				)
+			)}
 		</div>
 	);
 }

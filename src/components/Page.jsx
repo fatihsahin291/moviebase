@@ -1,15 +1,10 @@
-import {
-	useLocation,
-	useNavigate,
-} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Page({ page, setPage, active }) {
 	const navigate = useNavigate();
 	const location = useLocation();
 
-	const queryParams = new URLSearchParams(
-		location.search
-	);
+	const queryParams = new URLSearchParams(location.search);
 	const sterm = queryParams.get("sterm");
 	const syear = queryParams.get("syear");
 	const stype = queryParams.get("stype");
@@ -17,26 +12,16 @@ function Page({ page, setPage, active }) {
 	function handlePageClick() {
 		setPage(page);
 
-		navigate(
-			`?sterm=${sterm}&syear=${syear}&stype=${stype}&page=${page}`
-		);
+		navigate(`?sterm=${sterm}&syear=${syear}&stype=${stype}&page=${page}`);
 	}
-
-	console.log(sterm, syear, stype);
 
 	return (
 		<div
 			className="page"
-			style={
-				active
-					? { backgroundColor: "#f5f5f5" }
-					: null
-			}
+			style={active ? { backgroundColor: "#f5f5f5" } : null}
 			onClick={handlePageClick}
 		>
-			<button className="page-button">
-				{page}
-			</button>
+			<button className="page-button">{page}</button>
 		</div>
 	);
 }

@@ -11,10 +11,7 @@ import { KEY } from "../utils/constants";
  * @param {number} page - The page number for pagination.
  * @returns {Object} - An object containing movies, loading state, and error state.
  */
-export default function useMovies(
-	searchOptions,
-	page = 1
-) {
+export default function useMovies(searchOptions, page = 1) {
 	const [movies, setMovies] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
@@ -25,27 +22,34 @@ export default function useMovies(
 		searchType: stype,
 	} = searchOptions;
 
-	useEffect(() => {
-		const getMovies = async () => {
-			try {
-				setLoading(true);
+	console.log("useMovies", searchOptions, page);
 
-				const response = await fetch(
-					`https://www.omdbapi.com/?apikey=${KEY}&s=${sterm.trim()}&y=${syear}&type=${stype}&page=${page}`
-				);
-				const data = await response.json();
+	const getMovies = async () => {
+		try {
+			console.log("getMovies", sterm, syear, stype, page);
+			setLoading(true);
 
-				if (data.Search) {
-					setMovies(data.Search);
-				} else {
-					setMovies([]);
-				}
-				setLoading(false);
-			} catch (error) {
-				setError(error);
-				setLoading(false);
+			const apiKey = KEY;
+
+			const response = await fetch(
+				`https://www.omdbapi.com/?apikey=${apiKey}&s=${sterm.trim()}&y=${syear}&type=${stype}&page=${page}`
+			);
+			const data = await response.json();
+
+			if (data.Search) {
+				setMovies(data.Search);
+				localStorage.setItem("movies", JSON.stringify(data.Search));
+			} else {
+				setMovies([]);
 			}
-		};
+			setLoading(false);
+		} catch (error) {
+			setError(error);
+			setLoading(false);
+		}
+	};
+
+	useEffect(() => {
 		getMovies();
 	}, [sterm, syear, stype, page]);
 

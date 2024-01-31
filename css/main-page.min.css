@@ -1,0 +1,1 @@
+@import"./searchbar.scss";@import"./dashboard.scss";@import"./movie-details.scss";.main-page{background-color:var(--color-bg-primary);color:var(--color-text-primary);min-height:100vh;display:flex;flex-direction:column;align-items:center}/*# sourceMappingURL=main-page.min.css.map */
