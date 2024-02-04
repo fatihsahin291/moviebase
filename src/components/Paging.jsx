@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Page from "./Page";
 
-function Paging({ page, setPage, useMovies }) {
+function Paging({ page, setPage }) {
 	const pageNum = 30;
 
 	const navigate = useNavigate();
@@ -11,6 +11,10 @@ function Paging({ page, setPage, useMovies }) {
 	const sterm = queryParams.get("sterm");
 	const syear = queryParams.get("syear");
 	const stype = queryParams.get("stype");
+
+	if (pageParam && parseInt(pageParam) !== page) {
+		setPage(parseInt(parseInt(pageParam)));
+	}
 
 	function handlePageClick(step) {
 		setPage(page + step);

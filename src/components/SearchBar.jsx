@@ -19,6 +19,8 @@ function SearchBar({ setSearchOptions }) {
 		searchType: stype || stype !== "all" ? "" : stype,
 	});
 
+	setSearchOptions(tempSearchOptions);
+
 	function handleSearch() {
 		setSearchOptions(tempSearchOptions);
 

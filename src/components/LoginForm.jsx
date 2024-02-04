@@ -1,4 +1,4 @@
-function LoginForm() {
+function LoginForm({ handleLogin }) {
 	return (
 		<div className="login-form">
 			<form>
@@ -8,7 +8,9 @@ function LoginForm() {
 				<label htmlFor="password">Password</label>
 				<input type="password" id="password" name="password" />
 
-				<button type="submit">Login</button>
+				<button type="submit" onClick={(e) => handleLogin(e)}>
+					Login
+				</button>
 			</form>
 		</div>
 	);

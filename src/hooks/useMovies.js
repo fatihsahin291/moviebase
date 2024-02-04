@@ -24,33 +24,30 @@ export default function useMovies(searchOptions, page = 1) {
 
 	console.log("useMovies", searchOptions, page);
 
-	const getMovies = async () => {
+	const fetchMovies = async () => {
+		setLoading(true);
+		setError(null);
+
 		try {
-			console.log("getMovies", sterm, syear, stype, page);
-			setLoading(true);
-
-			const apiKey = KEY;
-
 			const response = await fetch(
-				`https://www.omdbapi.com/?apikey=${apiKey}&s=${sterm.trim()}&y=${syear}&type=${stype}&page=${page}`
+				`https://www.omdbapi.com/?apikey=${KEY}&s=${sterm}&y=${syear}&type=${stype}&page=${page}`
 			);
 			const data = await response.json();
 
-			if (data.Search) {
-				setMovies(data.Search);
-				localStorage.setItem("movies", JSON.stringify(data.Search));
-			} else {
-				setMovies([]);
+			if (data.Response === "False") {
+				throw new Error(data.Error);
 			}
-			setLoading(false);
+
+			setMovies(data.Search);
 		} catch (error) {
-			setError(error);
+			setError(error.message);
+		} finally {
 			setLoading(false);
 		}
 	};
 
 	useEffect(() => {
-		getMovies();
+		fetchMovies();
 	}, [sterm, syear, stype, page]);
 
 	return { movies, loading, error };
